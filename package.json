@@ -1,0 +1,27 @@
+{
+  "name": "game_inventory_app",
+  "version": "1.0.0",
+  "description": "Odin Project: Simple crud app to manage video game inventory.",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon --env-file .env app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaihanSharif/game_inventory_app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/RaihanSharif/game_inventory_app/issues"
+  },
+  "homepage": "https://github.com/RaihanSharif/game_inventory_app#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-validator": "^7.3.0",
+    "pg": "^8.16.3"
+  }
+}
