@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('partials/head.ejs') -%>
     <title><%= title %></title>
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <h1>games</h1>
+  <body class="container">
+    <%- include('partials/header.ejs') -%>
+    <!-- <h1><%= title %></h1> -->
+    <main>
+      <div class="jumbotron">
+        <h1>This is great</h1>
+        <p>Welcome to templating using EJS</p>
+      </div>
+    </main>
+
+    <!-- <h1>games</h1>
     <ul>
       <% if (locals.games) { %> <% games.forEach(game => { %>
       <li>
@@ -29,6 +36,7 @@
       </form>
 
       <% }) %> <% } %>
-    </ul>
+    </ul> -->
+    <footer><%- include('partials/footer') -%></footer>
   </body>
 </html>

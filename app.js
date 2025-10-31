@@ -7,7 +7,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use("/", (req, res) => {
   res.render("index", {
-    title: "Games List",
+    title: "Games Inventory",
     games: [
       { id: 0, title: "God of war", publish_date: "2005-10-12" },
       { id: 1, title: "Call of Duty 4", publish_date: "2008-12-12" },
