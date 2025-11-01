@@ -12,13 +12,15 @@ async function gamesFilteredByStudio(studioArr) {
 }
 
 async function gamesFilteredByGenre(genreArr) {
-  return ({ rows } = await pool.query(
+  const result = await pool.query(
     "SELECT title, TO_CHAR(publish_date, 'YYYY-MM-DD') as publish_date, rating \
   FROM game JOIN game_has_genre ghg ON ghg.game_id = game.id \
   JOIN genre ON ghg.genre_name = genre.name \
   WHERE genre.name = ANY($1)",
     [genreArr]
-  ));
+  );
+  const { rows } = result;
+  return rows;
 }
 
 async function getAllGames() {
