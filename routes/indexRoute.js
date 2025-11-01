@@ -1,2 +1,10 @@
-// this is for the homepage and linking the other routes together
-// then this gets linked to the app.js file
+// mounts the different routes into the app
+
+const gamesRouter = require("./gameRoutes");
+
+// called inside of app.js to mount the routes
+const mountRoutes = (app) => {
+  app.use("/", gamesRouter);
+};
+
+module.exports = mountRoutes;

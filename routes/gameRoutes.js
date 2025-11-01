@@ -7,3 +7,11 @@
 // (post) /game/:id/update --- submit game update form
 
 // (post) /game/:id/delete --- delete game
+
+const { Router } = require("express");
+const gamesController = require("../controllers/gameController");
+const gamesRouter = new Router();
+
+gamesRouter.get("/", gamesController);
+
+module.exports = gamesRouter;
