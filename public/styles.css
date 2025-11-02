@@ -47,11 +47,23 @@ body {
   justify-content: center;
 }
 
+.filters {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
 main > * {
   margin: 1rem;
 }
 main {
   margin: 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
 }
 .game-row {
   display: grid;
@@ -77,4 +89,13 @@ main {
   align-items: center;
   margin: 0;
   padding: 0.5rem;
+}
+
+footer {
+  background-color: black;
+  color: white;
+  padding: 1rem;
+}
+footer > a {
+  text-decoration: underline;
 }

@@ -44,6 +44,7 @@ async function getAllGames() {
   return rows;
 }
 
+// calls the right query function depending on what query filtering arrays were supplied
 async function getGamesList(genreArr, studioArr) {
   if (genreArr && studioArr) {
     return gamesFilteredByGenreAndStudio(genreArr, studioArr);
@@ -57,7 +58,13 @@ async function getGamesList(genreArr, studioArr) {
 }
 
 async function getAllStudios() {
-  const result = await pool.query("SELECT * FROM studio");
+  const result = await pool.query("SELECT * FROM studio;");
+  const { rows } = result;
+  return rows;
+}
+
+async function getAllGenres() {
+  const result = await pool.query("SELECT * FROM genre;");
   const { rows } = result;
   return rows;
 }
@@ -65,4 +72,5 @@ async function getAllStudios() {
 module.exports = {
   getGamesList,
   getAllStudios,
+  getAllGenres,
 };
