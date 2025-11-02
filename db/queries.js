@@ -4,7 +4,7 @@ async function gamesFilteredByStudio(studioArr) {
   const result = await pool.query(
     "SELECT game.id, title, TO_CHAR(publish_date, 'YYYY-MM-DD') as publish_date, rating \
     FROM game JOIN studio ON game.studio_id = studio.id \
-    WHERE studio.name = ANY($1)",
+    WHERE studio.id = ANY($1)",
     [studioArr]
   );
   const { rows } = result;
@@ -29,7 +29,7 @@ async function gamesFilteredByGenreAndStudio(genreArr, studioArr) {
   FROM game JOIN game_has_genre ghg ON ghg.game_id = game.id \
   JOIN genre ON ghg.genre_name = genre.name \
   JOIN studio ON game.studio_id = studio.id \
-  WHERE genre.name = ANY($1) AND studio.name = ANY($2)",
+  WHERE genre.name = ANY($1) AND studio.id = ANY($2)",
     [genreArr, studioArr]
   );
   const { rows } = result;
