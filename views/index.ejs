@@ -13,13 +13,12 @@
         <p>Welcome to templating using EJS</p>
       </div>
     </main>
-
-    <!-- <h1>games</h1>
+    <h1>games</h1>
     <ul>
       <% if (locals.games) { %> <% games.forEach(game => { %>
       <li>
-        ID: <%= game.id %>, Title: <%= game.title %> Published: <%=
-        game.publish_date %>
+        Title: <%= game.title %>, publish date: <%= game.publish_date %> Age
+        rating: <%= game.rating %>
       </li>
       <a href="#">Update</a>
       <form
@@ -36,7 +35,7 @@
       </form>
 
       <% }) %> <% } %>
-    </ul> -->
+    </ul>
     <footer><%- include('partials/footer') -%></footer>
   </body>
 </html>
