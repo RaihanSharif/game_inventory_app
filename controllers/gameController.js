@@ -7,10 +7,10 @@ async function getGames(req, res) {
 
   let { genre } = req.query;
   let { studio } = req.query;
-  if (!Array.isArray(genre)) {
+  if (genre && !Array.isArray(genre)) {
     genre = [genre];
   }
-  if (!Array.isArray(studio)) {
+  if (studio && !Array.isArray(studio)) {
     studio = [studio];
   }
   const gameData = await db.getGamesList(genre, studio);
