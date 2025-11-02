@@ -1,6 +1,43 @@
-/* TODO: add styles once functionality complete */
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.content {
+  min-height: 100%;
+  justify-items: center;
+}
+
 .game-row {
+  display: grid;
+  grid-template-columns: 5fr 2fr 1fr 1fr 1fr;
+  min-width: 100%;
+}
+
+.update-game-btn,
+.delete-game-btn {
+  place-self: center;
+  margin: 0;
+}
+
+/* .game-row {
   display: flex;
   gap: 1rem;
   padding: 1rem;
+} */
+
+.game-row > * {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0.5rem;
 }
