@@ -17,10 +17,47 @@ body {
   justify-items: center;
 }
 
+.content > * {
+  margin: 1rem;
+}
+
+.games-header {
+  background-color: lightgray;
+}
+
+.add-game-btn {
+  justify-self: center;
+  font-size: 3rem;
+  aspect-ratio: 1 /1;
+  color: white;
+  justify-content: center;
+}
+
+.add-game-btn a {
+  color: white;
+  text-decoration: none;
+  align-items: center;
+  margin: 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.game-rating {
+  text-align: center;
+  justify-content: center;
+}
+
+main > * {
+  margin: 1rem;
+}
+main {
+  margin: 1rem;
+}
 .game-row {
   display: grid;
   grid-template-columns: 5fr 2fr 1fr 1fr 1fr;
   min-width: 100%;
+  border-bottom: 1px lightgray solid;
 }
 
 .update-game-btn,
