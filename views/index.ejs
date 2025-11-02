@@ -2,40 +2,65 @@
 <html lang="en">
   <head>
     <%- include('partials/head.ejs') -%>
+    <link rel="stylesheet" href="styles.css" />
     <title><%= title %></title>
   </head>
   <body class="container">
     <%- include('partials/header.ejs') -%>
-    <!-- <h1><%= title %></h1> -->
-    <main>
-      <div class="jumbotron">
-        <h1>This is great</h1>
-        <p>Welcome to templating using EJS</p>
-      </div>
-    </main>
-    <h1>games</h1>
-    <ul>
-      <% if (locals.games) { %> <% games.forEach(game => { %>
-      <li>
-        Title: <%= game.title %>, publish date: <%= game.publish_date %> Age
-        rating: <%= game.rating %>
-      </li>
-      <a href="#">Update</a>
-      <form
-        action="/<%= game.id %>/delete"
-        method="POST"
-        style="display: inline"
-      >
-        <button
-          type="submit"
-          onclick="return confirm('Are you sure you want to delete this user?');"
+    <main></main>
+    <section class="description">
+      <h1>Games Inventory</h1>
+      <p>
+        This is the games inventory. Here you can manage a database of games,
+        studios and genres. Create, update, delete items, or filter them by
+        Genre and studio.
+      </p>
+    </section>
+    <section class="filter-menu">
+      Here should be the form to filter the sidebar
+    </section>
+    <div class="create-links">
+      <a href="/genre/create">Add genre</a>
+      <a href="/genre/update">Update genre</a>
+      <a href="/studio/create">Add studio</a>
+      <a href="/studio/update">Update studio</a>
+    </div>
+    <section class="games-container">
+      <div class="games-header game-row">
+        <h2>Title</h2>
+        <h2>Publish Date</h2>
+        <h2>Rating</h2>
+        <span></span>
+        <a
+          class="add-game-btn"
+          href="/games/create"
+          target="_blank"
+          rel="noopener noreferrer"
+          >+</a
         >
-          Delete
-        </button>
-      </form>
+      </div>
+      <% if (locals.games) { %> <% games.forEach(game => { %>
+      <div class="game-row">
+        <p class="game-title"><%= game.title %></p>
+        <p class="game-pub_date"><%= game.publish_date %></p>
+        <p class="game-rating"><%= game.rating %></p>
+        <a href="/<%= game.id %>/update">Update</a>
+        <form
+          action="/<%= game.id %>/delete"
+          method="POST"
+          style="display: inline"
+        >
+          <button
+            type="submit"
+            onclick="return confirm('Are you sure you want to delete this game?');"
+          >
+            Delete
+          </button>
+        </form>
+      </div>
 
       <% }) %> <% } %>
-    </ul>
+    </section>
     <footer><%- include('partials/footer') -%></footer>
   </body>
 </html>

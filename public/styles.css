@@ -1,1 +1,6 @@
 /* TODO: add styles once functionality complete */
+.game-row {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
