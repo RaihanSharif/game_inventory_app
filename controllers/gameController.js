@@ -1,7 +1,7 @@
 const { body, validationResult, matchedData } = require("express-validator");
 const db = require("../db/queries");
 
-async function getGames(req, res) {
+async function gamesListGet(req, res) {
   const genreData = await db.getAllGenres();
   const studioData = await db.getAllStudios();
 
@@ -14,8 +14,6 @@ async function getGames(req, res) {
     studio = [studio];
   }
   const gameData = await db.getGamesList(genre, studio);
-  console.log(genre);
-  console.log(studio);
   res.render("index", {
     title: "List of games",
     games: gameData,
@@ -24,4 +22,15 @@ async function getGames(req, res) {
   });
 }
 
-module.exports = getGames;
+async function addGamePost(req, res) {
+  console.log("req body");
+  console.log(req.body);
+  await db.insertGame(req.body);
+
+  res.redirect("/");
+}
+
+module.exports = {
+  gamesListGet,
+  addGamePost,
+};
