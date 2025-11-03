@@ -1,57 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include('partials/head.ejs') -%>
+    <%- include('partials/head.ejs') %>
     <title><%= title %></title>
   </head>
   <body>
     <div class="wrapper">
-      <%- include('partials/header.ejs'); %>
+      <%- include('partials/header.ejs') %>
       <main class="main">
-        <dialog id="create-game-modal">
-          <%- include('partials/createGameForm.ejs', {studios: locals.studios});
-          %>
-        </dialog>
-        <div class="container sidebar">
+        <div
+          class="modal fade"
+          id="create-game-modal"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="create-game-modal">
+                  Add game to database.
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <%- include('partials/createGameForm.ejs', {studios:
+                locals.studios, genres: locals.genres}); %>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  form="create-game-form"
+                >
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container" id="sidebar">
           <form class="filters" action="/" method="get">
             <fieldset>
-              <legend>Filter by genre</legend>
+              <legend>
+                Filter by genre
+                <button class="btn btn-success" type="submit">submit</button>
+              </legend>
               <% if (locals.genres) { %> <% genres.forEach(genre => { %>
-              <input
-                type="checkbox"
-                name="genre"
-                id="<%= genre.name %>"
-                value="<%= genre.name %>"
-              />
-              <label for="<%= genre.name %>"><%= genre.name %> </label>
+              <div>
+                <input
+                  type="checkbox"
+                  name="genre"
+                  id="<%= genre.name %>"
+                  value="<%= genre.name %>"
+                />
+                <label for="<%= genre.name %>"><%= genre.name %> </label>
+              </div>
               <% }) %> <% } %>
             </fieldset>
             <fieldset>
               <legend>Filter by studio</legend>
               <% if (locals.studios) { %> <% studios.forEach(studio => { %>
-              <input
-                type="checkbox"
-                name="studio"
-                id="<%= studio.id %>"
-                value="<%= studio.id %>"
-              />
-              <label for="<%= studio.id %>"><%= studio.name %></label>
+              <div>
+                <input
+                  type="checkbox"
+                  name="studio"
+                  id="<%= studio.id %>"
+                  value="<%= studio.id %>"
+                />
+                <label for="<%= studio.id %>"><%= studio.name %></label>
+              </div>
               <% }) %> <% } %>
             </fieldset>
-            <button type="submit">submit</button>
+            <button class="btn btn-success" type="submit">submit</button>
           </form>
         </div>
         <div class="container content">
           <section class="description">
-            <h1>Games Inventory</h1>
-            <p>
-              This is the games inventory. Here you can manage a database of
-              games, studios and genres. Create, update, delete items, or filter
-              them by Genre and studio.
-            </p>
-          </section>
-          <section class="filter-menu">
-            Here should be the form to filter the sidebar
+            <h2>Games Inventory</h2>
+            <h5>
+              Manage a database of games, studios and genres. Create, update,
+              delete items, or filter them by Genre and studio.
+            </h5>
           </section>
           <div class="create-links">
             <a class="btn btn-info" href="/genre/create">Add genre</a>
@@ -66,12 +108,12 @@
               <h2>Rating</h2>
               <span></span>
               <button
-                class="btn btn-success add-game-btn"
                 type="button"
-                commandfor="create-game-modal"
-                command="show-modal"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#create-game-modal"
               >
-                +
+                Add Game
               </button>
             </div>
             <% if (locals.games) { %> <% games.forEach(game => { %>
