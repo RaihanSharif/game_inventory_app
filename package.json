@@ -4,7 +4,8 @@
   "description": "Odin Project: Simple crud app to manage video game inventory.",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon --env-file .env app.js"
+    "dev": "nodemon --env-file .env app.js",
+    "start": "node --env-file .env app.js"
   },
   "repository": {
     "type": "git",
