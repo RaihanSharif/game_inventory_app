@@ -70,7 +70,7 @@ const SQL = `CREATE TABLE IF NOT EXISTS studio (
    ('Stellaris', '2015-05-18', 12, 6),
    ('FIFA 20', '2019-05-22', 12, 7),
    ('Cities Skylines', '2014-03-02', 12, 8),
-   ('Manor Lords, ', '2024-04-26', 12, 9);
+   ('Manor Lords', '2024-04-26', 12, 9);
   
   INSERT INTO game_has_genre(game_id, genre_name) VALUES 
     (1, 'Role Playing Game'),
@@ -93,7 +93,7 @@ const SQL = `CREATE TABLE IF NOT EXISTS studio (
 async function main(connectStr) {
   console.log("seeding...");
   const client = new Client({
-    connectionString: connectStr, //postgresql://raihansharif@localhost:5432/game_inventory for localhost
+    connectionString: connectStr, //  postgresql://raihansharif@localhost:5432/game_inventory for localhost
   });
   console.log(argv[2]);
   await client.connect();

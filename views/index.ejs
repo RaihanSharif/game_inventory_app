@@ -7,7 +7,7 @@
   <body>
     <div class="wrapper">
       <%- include('partials/header.ejs') %>
-      <main class="main">
+      <main class="main container">
         <div
           class="modal fade"
           id="create-game-modal"
@@ -42,6 +42,7 @@
                 <button
                   type="submit"
                   class="btn btn-primary"
+                  data-bs-dismiss="modal"
                   form="create-game-form"
                 >
                   Save changes
@@ -59,7 +60,7 @@
                 <button class="btn btn-success" type="submit">submit</button>
               </legend>
               <% if (locals.genres) { %> <% genres.forEach(genre => { %>
-              <div>
+              <div class="checkbox-item">
                 <input
                   type="checkbox"
                   name="genre"
@@ -103,9 +104,9 @@
           </div>
           <section class="games-container">
             <div class="games-header game-row">
-              <h2>Title</h2>
-              <h2>Publish Date</h2>
-              <h2>Rating</h2>
+              <h3>Title</h3>
+              <h3>Publish Date</h3>
+              <h3>Rating</h3>
               <span></span>
               <button
                 type="button"

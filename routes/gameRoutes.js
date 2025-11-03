@@ -12,6 +12,7 @@ const { Router } = require("express");
 const gamesController = require("../controllers/gameController");
 const gamesRouter = new Router();
 
-gamesRouter.get("/", gamesController);
+gamesRouter.get("/", gamesController.gamesListGet);
+gamesRouter.post("/game/create", gamesController.addGamePost);
 
 module.exports = gamesRouter;

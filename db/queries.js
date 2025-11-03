@@ -69,8 +69,34 @@ async function getAllGenres() {
   return rows;
 }
 
+async function insertGame(data) {
+  console.log("logging data");
+  console.log(data);
+  await pool.query(
+    "INSERT INTO game(title, publish_date, rating, studio_id) VALUES \
+    ($1, $2, $3, $4)",
+    [data.title, data.publish_date, data.rating, data.studio_id]
+  );
+
+  if (data.genre_name !== "") {
+    const result = await pool.query(
+      "SELECT id FROM game WHERE \
+      title = $1",
+      [data.title]
+    );
+    const { rows } = result;
+    console.log(rows);
+    await pool.query(
+      "INSERT INTO game_has_genre(game_id, genre_name) VALUES \
+      ($1, $2)",
+      [rows[0].id, data.genre_name]
+    );
+  }
+}
+
 module.exports = {
   getGamesList,
   getAllStudios,
   getAllGenres,
+  insertGame,
 };
