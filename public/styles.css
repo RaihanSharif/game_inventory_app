@@ -31,6 +31,8 @@ body {
   aspect-ratio: 1 /1;
   color: white;
   justify-content: center;
+  border-radius: 50%;
+  text-align: center;
 }
 
 .add-game-btn a {

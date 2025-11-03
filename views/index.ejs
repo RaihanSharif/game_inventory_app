@@ -8,6 +8,10 @@
     <div class="wrapper">
       <%- include('partials/header.ejs') -%>
       <main class="main">
+        <dialog id="create-game-modal">
+          <%- include('partials/createGameForm.ejs') -%>
+          <button type="button" data-dismiss="modal">Cancel</button>
+        </dialog>
         <div class="container sidebar">
           <form class="filters" action="/" method="get">
             <fieldset>
@@ -61,14 +65,14 @@
               <h2>Publish Date</h2>
               <h2>Rating</h2>
               <span></span>
-              <span class="add-game-btn btn btn-success">
-                <a
-                  href="/games/create"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >+</a
-                >
-              </span>
+              <button
+                class="btn btn-success add-game-btn"
+                type="button"
+                commandfor="create-game-modal"
+                command="show-modal"
+              >
+                +
+              </button>
             </div>
             <% if (locals.games) { %> <% games.forEach(game => { %>
             <div class="game-row">
