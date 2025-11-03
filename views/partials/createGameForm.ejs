@@ -1,12 +1,32 @@
-<form class="create-game-form" action="/game/create" method="post">
-  <button type="button" onclick="closeModal()">Cancel</button>
-  <div>
+<form id="create-game-form" action="/game/create" method="post">
+  <button type="button" id="cancel-game-create">Cancel</button>
+  <div class="create-game-form-inputs">
     <label for="title">game title: </label>
     <input type="text" name="title" id="title" />
     <label for="publish_date">publish date: </label>
     <input type="text" name="publish_date" id="publish_date" />
     <label for="rating">Age rating: </label>
     <input type="number" name="rating" id="rating" />
+    <% if (locals.studios) { %>
+    <select name="studio_id" id="studio_id">
+      <option value="">--Please choose an option--</option>
+      <% studios.forEach(studio => { %>
+      <option value="<%= studio.id %>"><%= studio.name %></option>
+      <% }) %>
+    </select>
+    <p><%= studios[0].name %></p>
+    <% } %>
   </div>
   <button type="submit">submit</button>
 </form>
+
+<script>
+  const cancelBtn = document.getElementById("cancel-game-create");
+  const dialog = document.getElementById("create-game-modal");
+
+  cancelBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    dialog.close();
+  });
+</script>
+<!-- TODO: Make age ratings a drop down -->

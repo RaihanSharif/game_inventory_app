@@ -6,11 +6,11 @@
   </head>
   <body>
     <div class="wrapper">
-      <%- include('partials/header.ejs') -%>
+      <%- include('partials/header.ejs'); %>
       <main class="main">
         <dialog id="create-game-modal">
-          <%- include('partials/createGameForm.ejs') -%>
-          <button type="button" data-dismiss="modal">Cancel</button>
+          <%- include('partials/createGameForm.ejs', {studios: locals.studios});
+          %>
         </dialog>
         <div class="container sidebar">
           <form class="filters" action="/" method="get">
